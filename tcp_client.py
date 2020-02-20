@@ -50,45 +50,45 @@ if __name__ == '__main__':
                     continue
                 print(recv_dic)
                 _uuid = recv_dic['uuid']
-                _cmd = recv_dic['cmd']
-                _method = recv_dic['method']
-                if _method == 'set':
+                _functionType = recv_dic['functionType']
+                _identifier = recv_dic['identifier']
+                if _functionType == 'propertySet':
                     _data = _uuid+'success'
                     _len = len(_data)
                     _send = '#'.encode()+struct.pack('!B',_len)+_data.encode()
                     tcp_socket.sendall(_send)
-                elif _method == 'get':
-                    if _cmd == 'someString':
+                elif _functionType == 'propertyGet':
+                    if _identifier == 'someString':
                         _data = _uuid + 'spiderman'
                         _len = len(_data)
                         _send = '#'.encode() + struct.pack('!B', _len) + _data.encode()
                         tcp_socket.sendall(_send)
-                    elif _cmd == 'someInteger':
+                    elif _identifier == 'someInteger':
                         _data = _uuid + '1234'
                         _len = len(_data)
                         _send = '#'.encode() + struct.pack('!B', _len) + _data.encode()
                         tcp_socket.sendall(_send)
-                    elif _cmd == 'someFloat':
+                    elif _identifier == 'someFloat':
                         _data = _uuid + '123.123'
                         _len = len(_data)
                         _send = '#'.encode() + struct.pack('!B', _len) + _data.encode()
                         tcp_socket.sendall(_send)
-                    elif _cmd == 'someDouble':
+                    elif _identifier == 'someDouble':
                         _data = _uuid + '321.321'
                         _len = len(_data)
                         _send = '#'.encode() + struct.pack('!B', _len) + _data.encode()
                         tcp_socket.sendall(_send)
-                    elif _cmd == 'someLong':
+                    elif _identifier == 'someLong':
                         _data = _uuid + '255000'
                         _len = len(_data)
                         _send = '#'.encode() + struct.pack('!B', _len) + _data.encode()
                         tcp_socket.sendall(_send)
-                    elif _cmd == 'someBoolean':
+                    elif _identifier == 'someBoolean':
                         _data = _uuid + 'True'
                         _len = len(_data)
                         _send = '#'.encode() + struct.pack('!B', _len) + _data.encode()
                         tcp_socket.sendall(_send)
-                    elif _cmd == 'someDate':
+                    elif _identifier == 'someDate':
                         _data = _uuid + str(int(time.time())*1000)
                         _len = len(_data)
                         _send = '#'.encode() + struct.pack('!B', _len) + _data.encode()
